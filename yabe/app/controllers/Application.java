@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.data.validation.*;
 import play.mvc.*;
 
 import java.util.*;
@@ -23,4 +24,19 @@ public class Application extends Controller {
         render(frontPost, olderPosts);
     }
 
+    public static void show(Long id) {
+        Post post = Post.findById(id);
+        render(post);
+    }
+    
+    public static void postComment(Long postId, @Required String author, @Required String content) {
+        Post post = Post.findById(postId);
+        if(validation.hasErrors()) {
+            render("Application/show.html", post);
+        }
+        post.addComment(author, content);
+        flash.success("Thanks for posting %s", author);
+        show(postId);
+    }
+    
 }

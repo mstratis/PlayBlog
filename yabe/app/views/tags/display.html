@@ -2,8 +2,8 @@
  
 <div class="post ${_as == 'teaser' ? 'teaser' : ''}">
     <h2 class="post-title">
-        <a href="#">${_post.title}</a>
-    </h2>
+    	<a href="@{Application.show(_post.id)}">${_post.title}</a>
+	</h2>
     <div class="post-metadata">
         <span class="post-author">by ${_post.author.fullname}</span>,
         <span class="post-date">${_post.postedAt.format('dd MMM yy')}</span>
