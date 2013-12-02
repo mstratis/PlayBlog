@@ -20,8 +20,12 @@ public class Post extends Model {
     @OneToMany(mappedBy="post", cascade=CascadeType.ALL)
     public List<Comment> comments;
      
-    public Post(User author, String title, String content) { 
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    public Set<Tag> tags;
+     
+    public Post(User author, String title, String content) {
         this.comments = new ArrayList<Comment>();
+        this.tags = new TreeSet<Tag>();
         this.author = author;
         this.title = title;
         this.content = content;
@@ -43,4 +47,14 @@ public class Post extends Model {
         return Post.find("postedAt > ? order by postedAt asc", postedAt).first();
     }
  
+    public Post tagItWith(String name) {
+        tags.add(Tag.findOrCreateByName(name));
+        return this;
+    }
+    
+    public static List<Post> findTaggedWith(String... tags) {
+        return Post.find(
+                "select distinct p from Post p join p.tags as t where t.name in (:tags) group by p.id, p.author, p.title, p.content,p.postedAt having count(t.id) = :size"
+        ).bind("tags", tags).bind("size", tags.length).fetch();
+    }
 }

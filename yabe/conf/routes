@@ -6,7 +6,7 @@
 GET     /                                       Application.index
 
 # Post page
-GET     /posts/{id}                             Application.show
+GET     /posts/{<[0-9]+>id}             		pplication.show		# regular expression here so it doesn't conflict with getting posts with tag
 POST    /posts/{postId}/comments                Application.postComment
 
 # Ignore favicon requests
@@ -17,6 +17,9 @@ GET     /public/                                staticDir:public
 
 # Captcha
 GET     /captcha                                Application.captcha
+
+# Tags
+GET     /posts/{tag}                 			Application.listTagged
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

@@ -3,6 +3,19 @@
 
 # Test data
 
+# Add the Tags declaration at the top of the YAML file, because they need to be created before any Post references them
+Tag(play):
+    name:           Play
+ 
+Tag(architecture):
+    name:           Architecture
+ 
+Tag(test):
+    name:           Test
+ 
+Tag(mvc):
+    name:           MVC   
+
 User(bob):
     email:          bob@gmail.com
     password:       secret
@@ -40,6 +53,10 @@ Post(jeffPost):
     title:          The MVC application
     postedAt:       2009-06-06
     author:         jeff
+    tags:
+                    - play
+                    - architecture
+                    - mvc
     content:        >
                     A Play! application follows the MVC architectural pattern as applied to the 
                     architecture of the Web.
@@ -67,5 +84,5 @@ Comment(c3):
     content:        >
                     This post is useless ?
     postedAt:       2009-04-05
-    post:           secondBobPost    
+    post:           secondBobPost 
                  
