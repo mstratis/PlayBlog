@@ -1,5 +1,0 @@
-13 Nov 2013 15:13:21,723 INFO  ~ Starting /Users/mstratis/TrainingDev/PlayTutorial/PlayBlog/yabe
-13 Nov 2013 15:13:22,265 WARN  ~ You're running Play! in DEV mode
-13 Nov 2013 15:13:22,331 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-13 Nov 2013 15:13:29,474 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
-13 Nov 2013 15:13:30,154 INFO  ~ Application 'Yet Another Blog Engine' is now started !
