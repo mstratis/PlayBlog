@@ -1,6 +1,18 @@
-/tmp
-/modules
-/lib
-/test-result
-/logs
+# Ignore Play! working directory #
+bin
+db
+eclipse
+lib
+log
+logs
+modules
+precompiled
+project/project
+project/target
+target
+tmp
+test-result
+server.pid
+*.iml
+*.eml
 
